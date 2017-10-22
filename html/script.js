@@ -4,14 +4,12 @@ var SECONDS = 15;
 
 
 //Weird stuff to get the string slice on the css property to work
-$.fn.delayCss=function(Time,Name,Value){
-var This=this;
-setTimeout(function(){
-This.css(Name,Value);
-},Time);
-return this;
-};
-
+function callback(slice){
+    return function()
+    {
+       $(this).css("background-image", "url(imgs/" + slice + ".png)");
+    };
+}
 
 function rand(lb, ub)
 {
@@ -47,11 +45,8 @@ function pushToScreen(enc)
         {
             var slice = chunk & 3; //Which is 0b11
             chunk = chunk >> 2;
-            var selector = ".cell:eq(" + cellIndex + ")";
-            var init_delay = rand(600, 2500);
-            $(selector).delayCss(init_delay, "background-image", "url(imgs/" + slice + ".png)");
-            $(selector)
-                .animate({'opacity':0}, rand(200,3000))
+            $(".cell:eq(" + cellIndex + ")")
+                .animate({'opacity':0}, rand(600,2500), callback(slice))
                 .animate({'opacity':1}, rand(200,3000));
             cellIndex ++;
         }
