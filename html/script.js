@@ -1,5 +1,5 @@
 $(document).ready(function(){
     
-    //alert("working");
+    console.log("Hello world");
     
 });
