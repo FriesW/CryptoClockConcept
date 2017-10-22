@@ -1,4 +1,5 @@
 var BEGIN_TIMESTAMP = 1508656525;
+var KEY = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3];
 
 function getTime()
 {
@@ -10,17 +11,17 @@ function getStamp()
     return parseInt((getTime() - BEGIN_TIMESTAMP) / 5);
 }
 
-$(document).ready(function(){
-    
-    console.log("Hello world");
-    console.log(getTime());
-    var bytes = aesjs.utils.utf8.toBytes("ABlockIs16Bytes!");
-    var key = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3];
-    var aes = new aesjs.AES(key);
-    
+function encrypt(data)
+{
+    data = ('0000000000000000'+String(data)).slice(-16); //Zero pad
+    var bytes = aesjs.utils.utf8.toBytes(data);
+    var aes = new aesjs.AES(KEY);
     var enc = aes.encrypt(bytes);
-    
-    //Compound
+    return enc;
+}
+
+function pushToScreen(enc)
+{
     var cellIndex = 0;
     for(var i = 0; i < enc.length; i++)
     {
@@ -33,4 +34,12 @@ $(document).ready(function(){
             cellIndex ++;
         }
     }
+}
+
+$(document).ready(function(){
+    
+    console.log("Hello world");
+    setInterval(function(){
+        pushToScreen(encrypt(getStamp()));
+    }, 1000);
 });
