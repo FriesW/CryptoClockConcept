@@ -15,8 +15,8 @@ body
 .cell
 {
     display: inline-block;
-    width:4em;
-    height:4em;
+    width:3.9em;
+    height:3.9em;
     /*margin: 0.1em;*/
     background-repeat: repeat;
 }
@@ -28,4 +28,5 @@ body
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     background-color: white;
+    padding: 1em;
 }
