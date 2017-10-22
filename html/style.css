@@ -1,0 +1,28 @@
+body
+{
+    padding: 0;
+    margin: 0;
+}
+
+.row
+{
+    padding: 0;
+}
+
+.cell
+{
+    display: inline-block;
+    width:4em;
+    height:4em;
+    background-color: green;
+    margin: 0.1em;
+}
+
+#wrapper
+{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    
+}
