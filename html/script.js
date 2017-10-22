@@ -56,6 +56,10 @@ function pushToScreen(enc)
 $(document).ready(function(){
     var pos = getStamp();
     
+    $(".cell").each(function(){
+        $(this).css({'backgroundPosition': '' + rand(0,800) + 'px ' + rand(0, 800) + 'px'});
+    });
+    
     pushToScreen(encrypt(pos++));
     setInterval(function(){
         pushToScreen(encrypt(pos++));
