@@ -61,7 +61,7 @@ function pushToScreen(enc)
 $(document).ready(function(){
     var pos = getStamp();
     
-    console.log("Hello world");
+    pushToScreen(encrypt(pos++));
     setInterval(function(){
         pushToScreen(encrypt(pos++));
     }, SECONDS*1000);
